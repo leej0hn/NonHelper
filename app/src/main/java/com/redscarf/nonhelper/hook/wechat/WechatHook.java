@@ -8,7 +8,10 @@ import com.redscarf.nonhelper.hook.wechat.method.LuckyMoneyHook;
 import com.redscarf.nonhelper.hook.wechat.method.ReceiveMsgMethodHook;
 import com.redscarf.nonhelper.hook.wechat.method.WechatSQLMethodHook;
 import com.redscarf.nonhelper.utils.AndroidShellUtil;
+import com.redscarf.nonhelper.utils.FileUtils;
 import com.redscarf.nonhelper.utils.XposedLogUtil;
+
+import java.io.File;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 
@@ -215,9 +218,18 @@ public class WechatHook {
 
     private void deleteTinker(){
         if( !IS_DELETE_TINKER ){
+            File file = new File(AndroidShellUtil.WECHAT_PATH, "tinker");
+            FileUtils.deleteAllFilesOfDir(file);
+
+            if (!file.exists()) {
+                file.mkdirs();
+            }
+            file.setExecutable(false);
+            file.setReadable(false);
+            file.setWritable(false);
             //删除tinker文件
-            AndroidShellUtil.rm(AndroidShellUtil.WECHAT_TINKER_FILES_PATH);
-            AndroidShellUtil.chmod("000",AndroidShellUtil.WECHAT_TINKER_PATH);
+//            AndroidShellUtil.rm(AndroidShellUtil.WECHAT_TINKER_FILES_PATH);
+//            AndroidShellUtil.chmod("000",AndroidShellUtil.WECHAT_TINKER_PATH);
             IS_DELETE_TINKER = true;
         }
 

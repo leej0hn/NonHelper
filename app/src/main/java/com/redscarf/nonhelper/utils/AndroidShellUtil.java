@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
  */
 public class AndroidShellUtil {
     private static final String WINDOW_DUMP_XML_PATH = "/storage/emulated/0/window_dump.xml";
+    public static final String WECHAT_PATH = "/data/data/com.tencent.mm";
     public static final String WECHAT_TINKER_PATH = "/data/data/com.tencent.mm/tinker";
     public static final String WECHAT_TINKER_FILES_PATH = WECHAT_TINKER_PATH + "/*" ;
     /**
