@@ -13,6 +13,7 @@ import com.redscarf.nonhelper.utils.XposedLogUtil;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 
 /**
+ * wechat version 6.5.10
  * <p>function: 微信Hook
  * <p>User: LeeJohn
  * <p>Date: 2017/09/08
